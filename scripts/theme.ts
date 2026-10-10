@@ -7,6 +7,8 @@ export interface Palette {
   readonly text: string;
   readonly muted: string;
   readonly signal: string;
+  readonly positive: string;
+  readonly negative: string;
 }
 
 export const PALETTES: Readonly<Record<ThemeName, Palette>> = {
@@ -17,6 +19,8 @@ export const PALETTES: Readonly<Record<ThemeName, Palette>> = {
     text: "#e8e6e1",
     muted: "#8a8780",
     signal: "#f2a93b",
+    positive: "#5fd38d",
+    negative: "#ef6a5b",
   },
   light: {
     background: "#f4f1ea",
@@ -25,6 +29,8 @@ export const PALETTES: Readonly<Record<ThemeName, Palette>> = {
     text: "#15140f",
     muted: "#6b675e",
     signal: "#b86e00",
+    positive: "#1f8a52",
+    negative: "#c0392b",
   },
 };
 
