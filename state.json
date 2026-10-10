@@ -1,11 +1,23 @@
 {
   "version": 1,
   "pose": {
-    "x": 8,
+    "x": 8.6,
     "y": 4,
     "angle": 0
   },
-  "totalMoves": 0,
-  "players": {},
-  "recent": []
+  "totalMoves": 1,
+  "players": {
+    "AurelienBaraquin": {
+      "moves": 1,
+      "lastMoveAt": "2026-10-10T16:04:03.937Z",
+      "lastResetAt": null
+    }
+  },
+  "recent": [
+    {
+      "login": "AurelienBaraquin",
+      "command": "forward",
+      "at": "2026-10-10T16:04:03.937Z"
+    }
+  ]
 }
