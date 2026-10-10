@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="230" viewBox="0 0 480 230" role="img" aria-labelledby="t d">
+<title id="t">Walk the corridor leaderboard</title>
+<desc id="d">0 steps · 0 explorers. Top explorers: none yet.</desc>
+<style>
+.mono{font-family:ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo, Consolas, monospace}
+.serif{font-family:'Iowan Old Style', 'Palatino Linotype', Georgia, serif}
+
+</style>
+<rect width="480" height="230" fill="#f4f1ea"/>
+<text class="mono" x="32" y="40" font-size="11" letter-spacing="2" fill="#b86e00">WALK THE CORRIDOR</text><text class="serif" x="32" y="70" font-size="20" font-weight="600" fill="#15140f">0 steps · 0 explorers</text><text class="mono" x="32" y="110" font-size="10" letter-spacing="2" fill="#6b675e">TOP EXPLORERS</text><text class="mono" x="32" y="134" font-size="12" fill="#6b675e">No one has walked yet. Be the first.</text><text class="mono" x="32" y="178" font-size="10" letter-spacing="2" fill="#6b675e">LATEST STEPS</text>
+</svg>
