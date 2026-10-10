@@ -23,3 +23,18 @@ jobs:
       - run: npm run typecheck
       - run: npm run lint
       - run: npm test
+
+  walker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            game/walker/target
+          key: walker-${{ runner.os }}-${{ hashFiles('game/walker/Cargo.lock') }}
+      - run: cargo fmt --check --manifest-path game/walker/Cargo.toml
+      - run: cargo clippy --locked --all-targets --manifest-path game/walker/Cargo.toml -- -D warnings
+      - run: cargo test --locked --manifest-path game/walker/Cargo.toml
