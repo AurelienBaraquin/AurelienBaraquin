@@ -45,6 +45,11 @@ export function parseState(raw: unknown): GameState {
   return stateSchema.parse(raw);
 }
 
+/** Same rule for the pose printed by the walker binary: it is external input too. */
+export function parsePose(raw: unknown): Pose {
+  return poseSchema.parse(raw);
+}
+
 export function isValidLogin(login: string): boolean {
   return LOGIN_PATTERN.test(login);
 }
