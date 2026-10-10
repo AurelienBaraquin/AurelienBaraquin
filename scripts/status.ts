@@ -22,8 +22,6 @@ const PROBE_TIMEOUT_MS = 8000;
 export const STATUS_TARGETS: readonly StatusTarget[] = [
   { name: "portfolio", url: "https://aurelienb.com" },
   { name: "pixel quest", url: "https://aurelienb.com/pixel-quest" },
-  { name: "miku", url: "https://miku.aurelienb.com" },
-  { name: "manifeste", url: "https://manifeste.aurelienb.com" },
 ];
 
 async function probe(
