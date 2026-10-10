@@ -1,0 +1,71 @@
+name: game
+
+on:
+  issues:
+    types: [opened]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+# Runs queue up and a pending run is replaced by a newer one; that is safe because every run
+# processes all open game issues, not just the one that triggered it.
+concurrency:
+  group: game
+  cancel-in-progress: false
+
+jobs:
+  play:
+    if: github.event_name == 'workflow_dispatch' || startsWith(github.event.issue.title, 'walk:')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      # Only trusted code from main is ever checked out or executed. The issue title is never
+      # interpolated into a shell command: it is read through the API and validated in TypeScript.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+
+      - uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            game/walker/target
+          key: walker-${{ runner.os }}-${{ hashFiles('game/walker/Cargo.lock') }}
+      - run: cargo build --release --locked --manifest-path game/walker/Cargo.toml
+
+      - name: Check out the game-state branch
+        run: |
+          if git ls-remote --exit-code --heads origin game-state >/dev/null; then
+            git fetch --depth=1 origin game-state
+            git worktree add game-data FETCH_HEAD
+          else
+            git worktree add --orphan -b game-state game-data
+          fi
+
+      - name: Process game issues
+        run: npx tsx scripts/game/run.ts
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GAME_DIR: game-data
+
+      # Runs even when an earlier step failed, so moves already applied are saved, but only if
+      # there is something to save (an earlier failure may mean the folder was never created).
+      - name: Publish the game state
+        if: always() && hashFiles('game-data/**') != ''
+        working-directory: game-data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add --all
+          if git diff --cached --quiet; then
+            echo "Game state unchanged"
+          else
+            git commit -m "chore: update game state"
+            git push origin HEAD:game-state
+          fi
