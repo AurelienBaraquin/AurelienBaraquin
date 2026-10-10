@@ -80,6 +80,18 @@ describe("README", () => {
     expect(readme).toContain(`${base}/leaderboard-light.svg`);
   });
 
+  it("keeps its table markup balanced", () => {
+    for (const tag of ["table", "tr", "td"]) {
+      expect(matches(new RegExp(`<${tag}[\\s>]`, "g")), `<${tag}> opened`).toHaveLength(
+        matches(new RegExp(`</${tag}>`, "g")).length,
+      );
+    }
+  });
+
+  it("links the real-time version of the engine", () => {
+    expect(readme).toContain('href="https://aurelienbaraquin.github.io/raycaster/"');
+  });
+
   it("uses https everywhere and no script", () => {
     expect(readme).not.toMatch(/http:\/\//);
     expect(readme).not.toMatch(/<script|javascript:/i);

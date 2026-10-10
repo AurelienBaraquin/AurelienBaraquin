@@ -81,7 +81,10 @@ Expect a minute or two, and a few more for GitHub to refresh the cached image.
 <a href="https://github.com/AurelienBaraquin/AurelienBaraquin/issues/new?title=walk%3Aright&body=Just%20press%20Submit%20new%20issue.%20A%20bot%20moves%20the%20camera%20and%20closes%20this%20issue.">turn right</a>
 <br>
 <a href="https://github.com/AurelienBaraquin/AurelienBaraquin/issues/new?title=walk%3Aback&body=Just%20press%20Submit%20new%20issue.%20A%20bot%20moves%20the%20camera%20and%20closes%20this%20issue.">back</a> ·
-<a href="https://github.com/AurelienBaraquin/AurelienBaraquin/issues/new?title=walk%3Areset&body=Just%20press%20Submit%20new%20issue.%20A%20bot%20moves%20the%20camera%20and%20closes%20this%20issue.">reset</a></td>
+<a href="https://github.com/AurelienBaraquin/AurelienBaraquin/issues/new?title=walk%3Areset&body=Just%20press%20Submit%20new%20issue.%20A%20bot%20moves%20the%20camera%20and%20closes%20this%20issue.">reset</a>
+<br><br>
+Want it smooth? <a href="https://aurelienbaraquin.github.io/raycaster/">Play the same engine in real time</a> (WASD to move, arrow keys to turn).
+</td>
 <td align="center" valign="top" width="40%">
 <picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/AurelienBaraquin/AurelienBaraquin/game-state/leaderboard-dark.svg"><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/AurelienBaraquin/AurelienBaraquin/game-state/leaderboard-light.svg"><img alt="Leaderboard of the explorers who moved the shared camera." src="https://raw.githubusercontent.com/AurelienBaraquin/AurelienBaraquin/game-state/leaderboard-dark.svg" width="100%"></picture>
 </td>
