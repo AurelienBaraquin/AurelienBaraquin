@@ -1,0 +1,9 @@
+[package]
+name = "walker"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[dependencies]
+glam = "0.33.7"
+raycaster-core = { git = "https://github.com/AurelienBaraquin/raycaster", rev = "87107f97bdb9dcfbca1d2eb008393d882f7fb47f" }
